@@ -12,6 +12,40 @@ import type { Server } from 'http';
 import { createExpressApp } from './app';
 import { ApolloServerPluginLandingPageDisabled } from '@apollo/server/plugin/disabled';
 import { ApolloServerPluginLandingPageLocalDefault } from '@apollo/server/plugin/landingPage/default';
+import { ApolloArmor } from '@escape.tech/graphql-armor';
+
+const armor = new ApolloArmor({
+  costLimit: {
+    enabled: true,
+    maxCost: 5000,
+    objectCost: 2,
+    scalarCost: 1,
+    depthCostFactor: 1.5,
+    ignoreIntrospection: process.env.NODE_ENV !== 'production',
+    fragmentRecursionCost: 5,
+  },
+  maxDepth: {
+    enabled: true,
+    n: 6,
+  },
+  maxAliases: {
+    enabled: true,
+    n: 2,
+  },
+  maxDirectives: {
+    enabled: true,
+    n: 6,
+  },
+  maxTokens: {
+    enabled: true,
+    n: 500,
+  },
+  blockFieldSuggestion: {
+    enabled: true,
+    mask: 'Got wrong field',
+  },
+});
+const protection = armor.protect();
 config();
 
 const PORT = process.env.PORT || 8000;
@@ -20,17 +54,18 @@ const createApolloServer = (httpServer: Server): ApolloServer<Context> => {
   return new ApolloServer<Context>({
     schema: schema,
     csrfPrevention: true,
-    introspection: process.env.NODE_ENV !== 'production',
-    includeStacktraceInErrorResponses: process.env.NODE_ENV !== 'production',
     persistedQueries: {
       ttl: 900,
     },
+    ...protection,
     plugins: [
+      ...protection.plugins,
       ApolloServerPluginDrainHttpServer({ httpServer }),
       process.env.NODE_ENV === 'production'
         ? ApolloServerPluginLandingPageDisabled()
         : ApolloServerPluginLandingPageLocalDefault({ footer: false }),
     ],
+    validationRules: [...protection.validationRules],
   });
 };
 

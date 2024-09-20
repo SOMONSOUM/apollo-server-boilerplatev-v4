@@ -857,6 +857,100 @@
   dependencies:
     "@jridgewell/trace-mapping" "0.3.9"
 
+"@envelop/core@^5.0.0":
+  version "5.0.2"
+  resolved "https://registry.yarnpkg.com/@envelop/core/-/core-5.0.2.tgz#f9649c72e66d78b55aafa0d2d2cfa5f9c3bfc127"
+  integrity sha512-tVL6OrMe6UjqLosiE+EH9uxh2TQC0469GwF4tE014ugRaDDKKVWwFwZe0TBMlcyHKh5MD4ZxktWo/1hqUxIuhw==
+  dependencies:
+    "@envelop/types" "5.0.0"
+    tslib "^2.5.0"
+
+"@envelop/types@5.0.0":
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/@envelop/types/-/types-5.0.0.tgz#3ae59b50ec31d4bdcc7bd0b47e9c8cf2ac44b0ff"
+  integrity sha512-IPjmgSc4KpQRlO4qbEDnBEixvtb06WDmjKfi/7fkZaryh5HuOmTtixe1EupQI5XfXO8joc3d27uUZ0QdC++euA==
+  dependencies:
+    tslib "^2.5.0"
+
+"@escape.tech/graphql-armor-block-field-suggestions@2.2.0":
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/@escape.tech/graphql-armor-block-field-suggestions/-/graphql-armor-block-field-suggestions-2.2.0.tgz#50a6b5d37ee40b55c223f5312390a9f693aa7e2e"
+  integrity sha512-a8E/mwDzlQsjv5WDxeG+cI7JprR+d0GbMKvwfNyuiS1f2yfSOiZjY45ZNbOhhPbIgvF8QtJysD+ZFax2cPcfUA==
+  dependencies:
+    graphql "^16.0.0"
+  optionalDependencies:
+    "@envelop/core" "^5.0.0"
+
+"@escape.tech/graphql-armor-cost-limit@2.2.0":
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/@escape.tech/graphql-armor-cost-limit/-/graphql-armor-cost-limit-2.2.0.tgz#58f90081f9abf46c7c955398690986ab9df2600b"
+  integrity sha512-26y2WOg7tTtgGthbmGF1HEIhyG+MCTmf6Kzk5uEbNKE6ct+RV/VwNXs8mb0DJPc3xpYHtnJWO8NiJMVRDre6Sw==
+  dependencies:
+    graphql "^16.0.0"
+  optionalDependencies:
+    "@envelop/core" "^5.0.0"
+    "@escape.tech/graphql-armor-types" "0.6.0"
+
+"@escape.tech/graphql-armor-max-aliases@2.5.0":
+  version "2.5.0"
+  resolved "https://registry.yarnpkg.com/@escape.tech/graphql-armor-max-aliases/-/graphql-armor-max-aliases-2.5.0.tgz#82748ec3f3492e47d84566fdcda2d4d01de88da2"
+  integrity sha512-deaLZF3ASfJY9jUbBzoZW9IUHWqAVorpDR9Yez4mxk8iFltwCpgtJfVEb57T+R0RyiFrtjdUM5SQpNZJxhie7w==
+  dependencies:
+    graphql "^16.0.0"
+  optionalDependencies:
+    "@envelop/core" "^5.0.0"
+    "@escape.tech/graphql-armor-types" "0.6.0"
+
+"@escape.tech/graphql-armor-max-depth@2.3.0":
+  version "2.3.0"
+  resolved "https://registry.yarnpkg.com/@escape.tech/graphql-armor-max-depth/-/graphql-armor-max-depth-2.3.0.tgz#029302cd30ba8b96e6775c1f5f47528b13090db1"
+  integrity sha512-EgqJU2yOaKaFeNDqMn18fIOI6UNjboWV950G9I39ebXyxsQmIaAx0Hs9hJoCBEHdLY9SCKWsEZFipHXqvaphdw==
+  dependencies:
+    graphql "^16.0.0"
+  optionalDependencies:
+    "@envelop/core" "^5.0.0"
+    "@escape.tech/graphql-armor-types" "0.6.0"
+
+"@escape.tech/graphql-armor-max-directives@2.2.0":
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/@escape.tech/graphql-armor-max-directives/-/graphql-armor-max-directives-2.2.0.tgz#1c3f9f99649afad8d9f0971514555b075ad54f78"
+  integrity sha512-DYU2Y2Qiq5Ui+NhDpdN22eU9jvxSnbCborrhdCO1ISzgCyYyCqiYBLBt0KRsEuIr4fpIpA3zBzzT97Y2qcj7Vw==
+  dependencies:
+    graphql "^16.0.0"
+  optionalDependencies:
+    "@envelop/core" "^5.0.0"
+    "@escape.tech/graphql-armor-types" "0.6.0"
+
+"@escape.tech/graphql-armor-max-tokens@2.4.0":
+  version "2.4.0"
+  resolved "https://registry.yarnpkg.com/@escape.tech/graphql-armor-max-tokens/-/graphql-armor-max-tokens-2.4.0.tgz#4c9a60fd12eb1242055b827fc9c9c0fb175f989e"
+  integrity sha512-apKQBcYc6vsrITR+uKGXTC9yWV4zUEP4usb5zO0vebYT6e4KLcS2gwIQOsDLCnD5IyU5sUOzHBWmkFyBPz5keQ==
+  dependencies:
+    graphql "^16.0.0"
+  optionalDependencies:
+    "@envelop/core" "^5.0.0"
+    "@escape.tech/graphql-armor-types" "0.6.0"
+
+"@escape.tech/graphql-armor-types@0.6.0":
+  version "0.6.0"
+  resolved "https://registry.yarnpkg.com/@escape.tech/graphql-armor-types/-/graphql-armor-types-0.6.0.tgz#ef18c40fcfbff5db6369690e58e7f587872b58f2"
+  integrity sha512-Y3X6JgkB1N1MMaHNXaE2IeJWIs6wT4XcPvXM8PRWmT2DblZfY4NYiV1mh0GTInKdlnrEr5hquOR9XV+M3Da43w==
+  dependencies:
+    graphql "^16.0.0"
+
+"@escape.tech/graphql-armor@^3.0.1":
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/@escape.tech/graphql-armor/-/graphql-armor-3.0.1.tgz#e51654d3d93f931a247eaaa87c519fcd55d1e80e"
+  integrity sha512-NdlpdFojylmze1uXSzQ1gcOXy3mSAMIoftNe1wh5tBSyyeHxpiGb0AUpL7VlfOqe1UXilCX+3xr1vAHburrNDA==
+  dependencies:
+    "@escape.tech/graphql-armor-block-field-suggestions" "2.2.0"
+    "@escape.tech/graphql-armor-cost-limit" "2.2.0"
+    "@escape.tech/graphql-armor-max-aliases" "2.5.0"
+    "@escape.tech/graphql-armor-max-depth" "2.3.0"
+    "@escape.tech/graphql-armor-max-directives" "2.2.0"
+    "@escape.tech/graphql-armor-max-tokens" "2.4.0"
+    graphql "^16.0.0"
+
 "@graphql-codegen/add@^5.0.3":
   version "5.0.3"
   resolved "https://registry.yarnpkg.com/@graphql-codegen/add/-/add-5.0.3.tgz#1ede6bac9a93661ed7fa5808b203d079e1b1d215"
@@ -3551,7 +3645,7 @@ graphql-ws@^5.14.0:
   resolved "https://registry.yarnpkg.com/graphql-ws/-/graphql-ws-5.16.0.tgz#849efe02f384b4332109329be01d74c345842729"
   integrity sha512-Ju2RCU2dQMgSKtArPbEtsK5gNLnsQyTNIo/T7cZNp96niC1x0KdJNZV0TIoilceBPQwfb5itrGl8pkFeOUMl4A==
 
-graphql@^16.3.0, graphql@^16.9.0:
+graphql@^16.0.0, graphql@^16.3.0, graphql@^16.9.0:
   version "16.9.0"
   resolved "https://registry.yarnpkg.com/graphql/-/graphql-16.9.0.tgz#1c310e63f16a49ce1fbb230bd0a000e99f6f115f"
   integrity sha512-GGTKBX4SD7Wdb8mqeDLni2oaRGYQWjWHGKPQ24ZMnUtKfcsVoiv4uX8+LJr1K6U5VW2Lu1BwJnj7uiori0YtRw==

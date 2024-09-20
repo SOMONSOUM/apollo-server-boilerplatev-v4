@@ -49,7 +49,7 @@ export const userResolver = {
     me: authGuard(me),
   },
   Mutation: {
-    createUser: authGuard(createUser),
+    createUser,
     login,
   },
 };

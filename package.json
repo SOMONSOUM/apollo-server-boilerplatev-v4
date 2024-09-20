@@ -12,6 +12,7 @@
     "generate": "yarn generate:prisma && yarn generate:codegen",
     "generate:prisma": "prisma generate",
     "prisma:studio": "prisma studio",
+    "prisma:deploy": "prisma migrate deploy",
     "generate:codegen": "graphql-codegen --config codegen.yml"
   },
   "dependencies": {

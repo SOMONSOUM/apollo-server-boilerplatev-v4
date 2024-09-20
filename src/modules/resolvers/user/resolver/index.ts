@@ -1,8 +1,8 @@
 import { User } from '@prisma/client';
-import { ResolverHandler } from '~/types';
+import { ResolverHandler } from './../../../../types';
 import { CreateUserInput, LoginInput } from '../dto/input';
 import { UserService } from '../services/user.service';
-import { authGuard } from '~/common/middlewares';
+import { authGuard } from './../../../../common/middlewares';
 import { LoginResponse } from '../dto/response';
 
 export const users: ResolverHandler<User[]> = async (

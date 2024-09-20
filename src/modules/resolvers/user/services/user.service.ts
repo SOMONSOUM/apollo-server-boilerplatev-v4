@@ -1,7 +1,11 @@
 import { PrismaClient, User } from '@prisma/client';
 import { CreateUserInput, LoginInput } from '../dto/input';
-import { comparePassword, createToken, hashPassword } from '~/utils';
-import { ERROR_MESSAGES } from '~/common/errors/error-messages';
+import {
+  comparePassword,
+  createToken,
+  hashPassword,
+} from './../../../../utils';
+import { ERROR_MESSAGES } from './../../../../common/errors/error-messages';
 import { GraphQLError } from 'graphql';
 
 export class UserService {

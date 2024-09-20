@@ -1,6 +1,5 @@
 import * as express from 'express';
-import { version } from '~/utils';
-
+import { version } from './../utils';
 
 const router = express.Router();
 

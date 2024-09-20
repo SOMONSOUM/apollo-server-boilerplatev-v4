@@ -1,8 +1,8 @@
-import { Context } from '~/context';
-import { Args, Parent, ResolverHandler } from '~/types';
+import { Context } from './../../context';
+import { Args, Parent, ResolverHandler } from './../../types';
 import { UNAUTHENTICATED, UNAUTHORIZED } from '../errors';
 import { ERROR_MESSAGES } from '../errors/error-messages';
-import { verifyToken } from '~/utils';
+import { verifyToken } from './../../utils';
 import { GraphQLResolveInfo } from 'graphql';
 
 type ResolverMiddleware = (next: ResolverHandler<any>) => any;

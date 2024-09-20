@@ -10,6 +10,8 @@ import { schema } from './modules/schema';
 import { Context, createContext } from './context';
 import type { Server } from 'http';
 import { createExpressApp } from './app';
+import { ApolloServerPluginLandingPageDisabled } from '@apollo/server/plugin/disabled';
+import { ApolloServerPluginLandingPageLocalDefault } from '@apollo/server/plugin/landingPage/default';
 config();
 
 const PORT = process.env.PORT || 8000;
@@ -21,9 +23,14 @@ const createApolloServer = (httpServer: Server): ApolloServer<Context> => {
     introspection: process.env.NODE_ENV !== 'production',
     includeStacktraceInErrorResponses: process.env.NODE_ENV !== 'production',
     persistedQueries: {
-      
+      ttl: 900,
     },
-    plugins: [ApolloServerPluginDrainHttpServer({ httpServer })],
+    plugins: [
+      ApolloServerPluginDrainHttpServer({ httpServer }),
+      process.env.NODE_ENV === 'production'
+        ? ApolloServerPluginLandingPageDisabled()
+        : ApolloServerPluginLandingPageLocalDefault({ footer: false }),
+    ],
   });
 };
 
@@ -39,7 +46,11 @@ const configureMiddleware = ({
 }): (() => void) => {
   app.use(
     '/graphql',
-    cors<cors.CorsRequest>(),
+    cors<cors.CorsRequest>({
+      origin: 'https://sls.puthi.online',
+      methods: ['POST'],
+      exposedHeaders: 'Authorization, X-Secret',
+    }),
     bodyParser.json(),
     expressMiddleware(apolloServer, {
       context: async ({ req, res }) => createContext({ req, res }),

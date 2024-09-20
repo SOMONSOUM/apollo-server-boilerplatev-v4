@@ -1,10 +1,10 @@
-import { ApolloServer } from "@apollo/server";
-import { ApolloServerPluginDrainHttpServer } from "@apollo/server/plugin/drainHttpServer";
-import express, { Request, Response } from "express";
-import http from "http";
-import { expressMiddleware } from "@apollo/server/express4";
-import { config } from "dotenv";
-import { schema } from "./graphql/schema";
+import { ApolloServer } from '@apollo/server';
+import { ApolloServerPluginDrainHttpServer } from '@apollo/server/plugin/drainHttpServer';
+import express, { Request, Response } from 'express';
+import http from 'http';
+import { expressMiddleware } from '@apollo/server/express4';
+import { config } from 'dotenv';
+import { schema } from './graphql/schema';
 config();
 
 const PORT = process.env.PORT || 8000;
@@ -19,12 +19,12 @@ const startApolloServer = async () => {
     plugins: [ApolloServerPluginDrainHttpServer({ httpServer })],
   });
   await server.start();
-  app.use("/graphql", express.json(), expressMiddleware(server));
+  app.use('/graphql', express.json(), expressMiddleware(server));
 
-  app.get("/", (req: Request, res: Response) => {
+  app.get('/', (req: Request, res: Response) => {
     return res.json({
-      name: "Apollo Server V4",
-      version: "0.0.1",
+      name: 'Apollo Server V4',
+      version: '0.0.1',
     });
   });
 
@@ -32,7 +32,7 @@ const startApolloServer = async () => {
     .listen(PORT, () => {
       console.log(`🚀 Server ready at http://localhost:${PORT}/graphql`);
     })
-    .on("error", (err: any) => console.error(err));
+    .on('error', (err: any) => console.error(err));
 };
 
 startApolloServer();

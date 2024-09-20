@@ -13,6 +13,7 @@ import { createExpressApp } from './app';
 import { ApolloServerPluginLandingPageDisabled } from '@apollo/server/plugin/disabled';
 import { ApolloServerPluginLandingPageLocalDefault } from '@apollo/server/plugin/landingPage/default';
 import { ApolloArmor } from '@escape.tech/graphql-armor';
+import { errorHandler } from './utils';
 
 const armor = new ApolloArmor({
   costLimit: {
@@ -66,6 +67,8 @@ const createApolloServer = (httpServer: Server): ApolloServer<Context> => {
         : ApolloServerPluginLandingPageLocalDefault({ footer: false }),
     ],
     validationRules: [...protection.validationRules],
+    formatError:
+      process.env.NODE_ENV === 'production' ? errorHandler : undefined,
   });
 };
 

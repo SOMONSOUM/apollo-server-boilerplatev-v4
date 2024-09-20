@@ -1,7 +1,9 @@
+import { userResolver } from './user/resolver';
+
 const rootResolver = {
   Query: {
     hellWorld: () => {
-      return "Hello World";
+      return 'Hello World';
     },
   },
   Mutation: {
@@ -11,4 +13,4 @@ const rootResolver = {
   },
 };
 
-export const resolvers = [rootResolver];
+export const resolvers = [rootResolver, userResolver];

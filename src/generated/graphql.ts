@@ -16,9 +16,28 @@ export type Scalars = {
   Upload: { input: any; output: any; }
 };
 
+export type CreateUserInput = {
+  email?: InputMaybe<Scalars['String']['input']>;
+  name?: InputMaybe<Scalars['String']['input']>;
+  password?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type Me = {
+  __typename?: 'Me';
+  email?: Maybe<Scalars['String']['output']>;
+  id?: Maybe<Scalars['Int']['output']>;
+  name?: Maybe<Scalars['String']['output']>;
+};
+
 export type Mutation = {
   __typename?: 'Mutation';
+  createUser?: Maybe<User>;
   testingMuation?: Maybe<Scalars['Boolean']['output']>;
+};
+
+
+export type MutationCreateUserArgs = {
+  input?: InputMaybe<CreateUserInput>;
 };
 
 export type Ok = {
@@ -28,5 +47,15 @@ export type Ok = {
 
 export type Query = {
   __typename?: 'Query';
+  getUsers?: Maybe<Array<Maybe<User>>>;
   hellWorld?: Maybe<Scalars['String']['output']>;
+  me?: Maybe<Me>;
+};
+
+export type User = {
+  __typename?: 'User';
+  email?: Maybe<Scalars['String']['output']>;
+  id?: Maybe<Scalars['Int']['output']>;
+  name?: Maybe<Scalars['String']['output']>;
+  password?: Maybe<Scalars['String']['output']>;
 };

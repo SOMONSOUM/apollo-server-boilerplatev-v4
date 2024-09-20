@@ -27,7 +27,7 @@ export const createExpressApp = (): express.Application => {
   const allowlist = ['*'];
 
   if (process.env.NODE_ENV !== 'production') {
-    allowlist.push('http://localhost:19000');
+    allowlist.push('https://sls.puthi.online');
   }
 
   const corsOptionsDelegate: CorsOptionsDelegate<any> = (

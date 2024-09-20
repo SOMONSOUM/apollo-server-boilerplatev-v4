@@ -47,7 +47,7 @@ const configureMiddleware = ({
   app.use(
     '/graphql',
     cors<cors.CorsRequest>({
-      origin: 'https://sls.puthi.online',
+      origin: ['http://localhost:3000', 'https://sls.puthi.online'],
       methods: ['POST'],
       exposedHeaders: 'Authorization, X-Secret',
     }),
@@ -91,7 +91,7 @@ if (process.env.NODE_ENV !== 'test') {
   // Note: below is sample of cron job.
   // const rule = new schedule.RecurrenceRule();
 
-  // rule.tz = 'Asia/Seoul';
+  // rule.tz = 'Asia/Phnom_Penh';
   // rule.dayOfWeek = [0, new schedule.Range(0, 6)];
   // rule.hour = 4;
   // rule.minute = 0;

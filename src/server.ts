@@ -22,7 +22,7 @@ const armor = new ApolloArmor({
     objectCost: 2,
     scalarCost: 1,
     depthCostFactor: 1.5,
-    ignoreIntrospection: process.env.NODE_ENV !== 'production',
+    ignoreIntrospection: process.env.NODE_ENV === 'production',
     fragmentRecursionCost: 5,
   },
   maxDepth: {

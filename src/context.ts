@@ -30,7 +30,10 @@ export async function createContext(
 
     const authToken = authHeader.replace('Bearer ', '');
     if (authToken) {
-      const { userId } = await verifyToken(authToken);
+      const { userId } = await verifyToken(
+        authToken,
+        process.env.JWT_ACCESS_SECRET_KEY,
+      );
 
       if (userId) {
         user = await prisma.user.findFirstOrThrow({

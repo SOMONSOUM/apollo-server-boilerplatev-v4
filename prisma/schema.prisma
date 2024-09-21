@@ -30,12 +30,13 @@ model Profile {
 }
 
 model User {
-  id       Int      @id @default(autoincrement()) @map("id")
-  email    String   @unique @map("email")
-  name     String?  @map("name")
-  password String   @map("password")
-  posts    Post[]
-  profile  Profile?
+  id           Int      @id @default(autoincrement()) @map("id")
+  email        String   @unique @map("email")
+  name         String?  @map("name")
+  password     String   @map("password")
+  refreshToken String?  @map("refresh-token")
+  posts        Post[]
+  profile      Profile?
 
   @@map("users")
 }

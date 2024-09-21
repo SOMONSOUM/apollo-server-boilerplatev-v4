@@ -1,6 +1,6 @@
 import { User } from '@prisma/client';
 import { ResolverHandler } from './../../../../types';
-import { CreateUserInput, LoginInput } from '../dto/input';
+import { CreateUserInput, LoginInput, RefreshTokenInput } from '../dto/input';
 import { UserService } from '../services/user.service';
 import { authGuard } from './../../../../common/middlewares';
 import { LoginResponse } from '../dto/response';
@@ -29,9 +29,7 @@ export const login: ResolverHandler<
 > = async (_, { input }, { prisma }, info) => {
   const userService = new UserService(prisma);
 
-  return {
-    accessToken: await userService.login(input),
-  };
+  return await userService.login(input);
 };
 
 export const me: ResolverHandler<User | null> = async (
@@ -43,13 +41,22 @@ export const me: ResolverHandler<User | null> = async (
   return user;
 };
 
+export const refreshToken: ResolverHandler<
+  LoginResponse,
+  { input: RefreshTokenInput }
+> = async (_, { input }, { prisma }, info) => {
+  const userService = new UserService(prisma);
+  return await userService.refreshToken(input.refreshToken);
+};
+
 export const userResolver = {
   Query: {
     getUsers: authGuard(users),
     me: authGuard(me),
   },
   Mutation: {
-    createUser,
+    createUser: authGuard(createUser),
     login,
+    refreshToken,
   },
 };

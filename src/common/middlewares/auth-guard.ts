@@ -37,7 +37,10 @@ export const authGuard: ResolverMiddleware = (next) => {
       });
     }
 
-    const { userId } = await verifyToken(token);
+    const { userId } = await verifyToken(
+      token,
+      process.env.JWT_ACCESS_SECRET_KEY,
+    );
 
     if (context.user.id !== userId) {
       throw new GraphQLError(ERROR_MESSAGES.UNAUTHORIZED, {

@@ -19,7 +19,7 @@ config();
 const armor = new ApolloArmor({
   costLimit: {
     enabled: true,
-    maxCost: 5000,
+    maxCost: 100,
     objectCost: 2,
     scalarCost: 1,
     depthCostFactor: 1.5,
@@ -28,15 +28,16 @@ const armor = new ApolloArmor({
   },
   maxDepth: {
     enabled: true,
-    n: 6,
+    n: 10,
   },
   maxAliases: {
     enabled: true,
-    n: 0,
+    n: 2,
+    propagateOnRejection: true,
   },
   maxDirectives: {
     enabled: true,
-    n: 6,
+    n: 1,
   },
   maxTokens: {
     enabled: true,
@@ -54,7 +55,8 @@ const expressApp = createExpressApp();
 const createApolloServer = (httpServer: Server): ApolloServer<Context> => {
   return new ApolloServer<Context>({
     schema: schema,
-    csrfPrevention: true,
+    csrfPrevention: process.env.NODE_ENV === 'production',
+    introspection: process.env.NODE_ENV !== 'production',
     persistedQueries: {
       ttl: 900,
     },

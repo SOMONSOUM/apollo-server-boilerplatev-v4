@@ -11,7 +11,7 @@ export const createAccessToken = async (userId: number) => {
   const token = await new jose.SignJWT({ userId })
     .setProtectedHeader({ alg })
     .setIssuedAt()
-    .setExpirationTime('1m')
+    .setExpirationTime('1h')
     .sign(await genKey(process.env.JWT_ACCESS_SECRET_KEY));
   return token;
 };

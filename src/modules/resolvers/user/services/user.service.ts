@@ -1,4 +1,4 @@
-import { PrismaClient, User } from '@prisma/client';
+import { User } from '@prisma/client';
 import { CreateUserInput, LoginInput } from '../dto/input';
 import {
   comparePassword,
@@ -11,7 +11,7 @@ import { ERROR_MESSAGES } from './../../../../common/errors/error-messages';
 import { GraphQLError } from 'graphql';
 
 export class UserService {
-  constructor(private readonly prisma: PrismaClient) {}
+  constructor(private readonly prisma: typeof __db__) {}
 
   async getUsers(): Promise<User[]> {
     return this.prisma.user.findMany({

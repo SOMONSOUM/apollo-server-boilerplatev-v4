@@ -36,6 +36,7 @@ model User {
   email        String   @unique @map("email")
   name         String?  @map("name")
   password     String   @map("password")
+  gender       String?  @map("gender")
   refreshToken String?  @map("refresh-token")
   posts        Post[]
   profile      Profile?

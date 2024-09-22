@@ -2,14 +2,13 @@ import { PrismaClient, User } from '@prisma/client';
 import type express from 'express';
 import { verifyToken } from './utils/encrypt';
 import { GraphQLError } from 'graphql';
+import { prisma } from './lib';
 
 export interface Context {
   user: User | null;
   req: express.Request;
   prisma: PrismaClient;
 }
-
-const prisma = new PrismaClient();
 
 type CreateContextParams = {
   req: express.Request;

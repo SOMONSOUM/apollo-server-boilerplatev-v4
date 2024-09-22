@@ -11,10 +11,16 @@ const rootTypeDefs = gql`
 
   type Query {
     hellWorld: String
+    getTest(input: TestInput): String
+  }
+
+  input TestInput {
+    id: Int
+    name: String
   }
 
   type Mutation {
-    testingMuation: Boolean
+    testMuation: Boolean
   }
 `;
 

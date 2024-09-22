@@ -14,6 +14,7 @@ import { ApolloServerPluginLandingPageDisabled } from '@apollo/server/plugin/dis
 import { ApolloServerPluginLandingPageLocalDefault } from '@apollo/server/plugin/landingPage/default';
 import { ApolloArmor } from '@escape.tech/graphql-armor';
 import { errorHandler } from './utils';
+config();
 
 const armor = new ApolloArmor({
   costLimit: {
@@ -31,7 +32,7 @@ const armor = new ApolloArmor({
   },
   maxAliases: {
     enabled: true,
-    n: 2,
+    n: 0,
   },
   maxDirectives: {
     enabled: true,
@@ -47,7 +48,6 @@ const armor = new ApolloArmor({
   },
 });
 const protection = armor.protect();
-config();
 
 const PORT = process.env.PORT || 8000;
 const expressApp = createExpressApp();

@@ -14,17 +14,19 @@ model Post {
   title     String   @map("title") @db.VarChar(255)
   content   String?  @map("content")
   published Boolean  @default(false) @map("published")
-  author    User     @relation(fields: [authorId], references: [id])
   authorId  Int      @map("author_id")
+  author    User     @relation(fields: [authorId], references: [id])
 
+  @@index([authorId], map: "posts_author_id_fkey")
   @@map("posts")
 }
 
 model Profile {
-  id     Int     @id @default(autoincrement()) @map("id")
-  bio    String? @map("bio")
-  user   User    @relation(fields: [userId], references: [id])
-  userId Int     @unique @map("user_id")
+  id           Int     @id @default(autoincrement()) @map("id")
+  bio          String? @map("bio")
+  profileImage String? @map("profile_image")
+  userId       Int     @unique @map("user_id")
+  user         User    @relation(fields: [userId], references: [id])
 
   @@map("profiles")
 }

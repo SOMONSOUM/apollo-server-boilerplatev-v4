@@ -43,9 +43,9 @@ export const authGuard: ResolverMiddleware = (next) => {
     );
 
     if (context.user.id !== userId) {
-      throw new GraphQLError(ERROR_MESSAGES.UNAUTHORIZED, {
+      throw new GraphQLError(ERROR_MESSAGES.UNAUTHENTICATED, {
         extensions: {
-          code: 'UNAUTHORIZED',
+          code: 'UNAUTHENTICATED',
         },
       });
     }

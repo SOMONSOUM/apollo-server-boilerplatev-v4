@@ -11,7 +11,7 @@ export const createAccessToken = async (userId: number) => {
   const token = await new jose.SignJWT({ userId })
     .setProtectedHeader({ alg })
     .setIssuedAt()
-    .setExpirationTime('1h')
+    .setExpirationTime('1m')
     .sign(await genKey(process.env.JWT_ACCESS_SECRET_KEY));
   return token;
 };
@@ -33,11 +33,11 @@ export const verifyToken = async (token: string, key: string | undefined) => {
   } catch (error) {
     if (error instanceof jose.errors.JWTExpired) {
       throw new GraphQLError(error.message, {
-        extensions: { code: error.code },
+        extensions: { code: 'UNAUTHENTICATED' },
       });
     } else if (error instanceof jose.errors.JWTInvalid) {
       throw new GraphQLError(error.message, {
-        extensions: { code: error.code },
+        extensions: { code: 'UNAUTHENTICATED' },
       });
     }
     return { userId: undefined };

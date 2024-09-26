@@ -17,9 +17,20 @@ export type Scalars = {
 };
 
 export type CreateUserInput = {
-  email?: InputMaybe<Scalars['String']['input']>;
+  email: Scalars['String']['input'];
   name?: InputMaybe<Scalars['String']['input']>;
-  password?: InputMaybe<Scalars['String']['input']>;
+  password: Scalars['String']['input'];
+};
+
+export type LoginInput = {
+  email: Scalars['String']['input'];
+  password: Scalars['String']['input'];
+};
+
+export type LoginResponse = {
+  __typename?: 'LoginResponse';
+  accessToken?: Maybe<Scalars['String']['output']>;
+  refreshToken?: Maybe<Scalars['String']['output']>;
 };
 
 export type Me = {
@@ -32,12 +43,24 @@ export type Me = {
 export type Mutation = {
   __typename?: 'Mutation';
   createUser?: Maybe<User>;
-  testingMuation?: Maybe<Scalars['Boolean']['output']>;
+  login?: Maybe<LoginResponse>;
+  refreshToken?: Maybe<LoginResponse>;
+  testMuation?: Maybe<Scalars['Boolean']['output']>;
 };
 
 
 export type MutationCreateUserArgs = {
-  input?: InputMaybe<CreateUserInput>;
+  input: CreateUserInput;
+};
+
+
+export type MutationLoginArgs = {
+  input: LoginInput;
+};
+
+
+export type MutationRefreshTokenArgs = {
+  input: RefreshTokenInput;
 };
 
 export type Ok = {
@@ -47,9 +70,24 @@ export type Ok = {
 
 export type Query = {
   __typename?: 'Query';
+  getTest?: Maybe<Scalars['String']['output']>;
   getUsers?: Maybe<Array<Maybe<User>>>;
   hellWorld?: Maybe<Scalars['String']['output']>;
   me?: Maybe<Me>;
+};
+
+
+export type QueryGetTestArgs = {
+  input?: InputMaybe<TestInput>;
+};
+
+export type RefreshTokenInput = {
+  refreshToken?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type TestInput = {
+  id?: InputMaybe<Scalars['Int']['input']>;
+  name?: InputMaybe<Scalars['String']['input']>;
 };
 
 export type User = {
@@ -57,5 +95,4 @@ export type User = {
   email?: Maybe<Scalars['String']['output']>;
   id?: Maybe<Scalars['Int']['output']>;
   name?: Maybe<Scalars['String']['output']>;
-  password?: Maybe<Scalars['String']['output']>;
 };

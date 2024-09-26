@@ -66,9 +66,9 @@ export class UserService {
     );
 
     if (!decoded.userId) {
-      throw new GraphQLError(ERROR_MESSAGES.UNAUTHORIZED, {
+      throw new GraphQLError(ERROR_MESSAGES.UNAUTHENTICATED, {
         extensions: {
-          code: 'UNAUTHORIZED',
+          code: 'UNAUTHENTICATED',
         },
       });
     }
@@ -83,9 +83,9 @@ export class UserService {
     );
 
     if (!match) {
-      throw new GraphQLError(ERROR_MESSAGES.UNAUTHORIZED, {
+      throw new GraphQLError(ERROR_MESSAGES.UNAUTHENTICATED, {
         extensions: {
-          code: 'UNAUTHORIZED',
+          code: 'UNAUTHENTICATED',
         },
       });
     }

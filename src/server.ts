@@ -14,7 +14,15 @@ import { ApolloServerPluginLandingPageDisabled } from '@apollo/server/plugin/dis
 import { ApolloServerPluginLandingPageLocalDefault } from '@apollo/server/plugin/landingPage/default';
 import { ApolloArmor } from '@escape.tech/graphql-armor';
 import { errorHandler } from './utils';
+import { createStellateLoggerPlugin } from 'stellate/apollo-server';
 config();
+
+const stellatePlugin = createStellateLoggerPlugin({
+  serviceName: 'puthi',
+  token:
+    'stl8log_4f0a62344f89d7869ccd2969b478522f9a6117edb4228ca200207efc7d5fb2fb',
+  fetch: fetch,
+});
 
 const armor = new ApolloArmor({
   costLimit: {
@@ -62,6 +70,7 @@ const createApolloServer = (httpServer: Server): ApolloServer<Context> => {
     },
     ...protection,
     plugins: [
+      stellatePlugin,
       ...protection.plugins,
       ApolloServerPluginDrainHttpServer({ httpServer }),
       process.env.NODE_ENV === 'production'

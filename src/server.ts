@@ -96,7 +96,7 @@ const configureMiddleware = ({
   app.use(
     '/graphql',
     cors<cors.CorsRequest>({
-      origin: ['http://localhost:3000', 'https://sls.puthi.online'],
+      origin: ['http://localhost:3000', 'https://sls.pi314.pro'],
       methods: ['POST'],
       exposedHeaders: 'Authorization, X-Secret',
     }),
